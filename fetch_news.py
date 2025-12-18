@@ -50,7 +50,7 @@ def fetch_historical_rss(keyword, filename):
 
 # --- EXECUTION ---
 # Group 1: Corporate signals (Alphabet focus)
-fetch_historical_rss('Alphabet Inc GOOGL stock', 'alphabet_news_150.csv')
+fetch_historical_rss('Alphabet Inc GOOGL stock', 'alphabet_news_150.csv') # <--- Make this file name unique
 
 # Group 2: Product signals (AI focus)
-fetch_historical_rss('Google Gemini AI benchmark', 'gemini_news_150.csv')
+fetch_historical_rss('Google Gemini AI benchmark', 'gemini_news_150.csv') # <--- Make this file name unique
