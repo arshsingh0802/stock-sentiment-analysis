@@ -14,6 +14,63 @@
 - **Alpha**: -10.53% during launch window (Standard "Sell the News" pattern).
 
 ### How to Run
-1. `pip install -r requirements.txt`
-2. `python benchmark.py`
-3. `python final_comparison.py`
+
+1) Clone & enter the repository
+
+```
+git clone https://github.com/<your-username>/<repo>.git
+cd stock-sentiment-analysis
+```
+
+2) Create & activate a virtual environment (recommended)
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+3) Install dependencies
+
+```
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+> **Troubleshooting:** If you see import errors after installing requirements, run:
+>
+> ```
+> python -m pip install matplotlib feedparser alpha_vantage dateparser python-dotenv
+> ```
+
+4) Set Alpha Vantage API key (required by `fetch_data.py`)
+
+```
+export ALPHAVANTAGE_API_KEY="your_api_key_here"
+```
+
+5) Fetch / prepare data
+
+```
+python fetch_data.py      # Downloads google stock data
+python fetch_news.py      # Collects headlines (alphabet & gemini)
+python benchmark.py       # Downloads or creates QQQ benchmark
+```
+
+6) Prepare sentiment (NLTK VADER)
+
+```
+python -c "import nltk; nltk.download('vader_lexicon')"
+python analyze_sentiment.py
+```
+
+7) Run analyses & visualizations
+
+```
+python final_comparison.py
+python event_study.py
+python final_correlation.py
+```
+
+Notes:
+- If running on a headless server, replace `plt.show()` with `plt.savefig('plot.png')` in scripts to save figures instead of displaying interactive windows.
+- After verifying, you can update `requirements.txt` with pinned versions: `python -m pip freeze > requirements.txt`
